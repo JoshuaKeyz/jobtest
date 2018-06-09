@@ -6,8 +6,8 @@ module.exports = {
       database: 'rest_api',
       user: 'postgres',
       password: 'example',
-      host: 'db',
-      port: 5432
+      host: '127.0.0.1',
+      port: 5555
     },
     migrations: {
       directory: __dirname + '/db/migrations'
@@ -18,18 +18,18 @@ module.exports = {
   },
   test: {
     client: 'pg',
-    connection:{
-      databbase: 'rest_api_test',
+    connection: {
+      database: 'rest_api_test',
       user: 'postgres',
       password: 'example',
-      host: 'db',
-      port: 5432
+      host: '127.0.0.1',
+      port: 5555
     },
     migrations:{
       directory: __dirname + '/db/migrations'
     },
     seeds: {
-      directory: __dirname + 'db/seeds/development'
+      directory: __dirname + '/db/seeds/test'
     }
   },
   production: {
