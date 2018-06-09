@@ -1,5 +1,10 @@
 # Project Documentation
-## Registration for Contractor
+# Content
+    - API Documentation
+    - Testing the Application
+    - Running the Application
+# API Documentation
+## Registration for Contractors
 
 ## Registration for Consumers
 
