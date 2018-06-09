@@ -29,9 +29,15 @@ module.exports = function(grunt){
     });
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-mocha-test')
+<<<<<<< HEAD
     grunt.loadNpmTasks('grunt-git');
 
     grunt.registerTask("test", ["mochaTest"])
     grunt.registerTask("deploy", ['exec'])
     grunt.registerTask("update_git", ['gitadd', 'gitcommit', 'gitpush'])
+=======
+
+    grunt.registerTask("test", ["mochaTest"])
+    grunt.registerTask("deploy", ['exec'])
+>>>>>>> 379d539df1145ee84505554f0a14b576a70b0b58
 };
