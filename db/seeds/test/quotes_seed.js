@@ -5,7 +5,6 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('quotes').insert({
-        id: 1, 
         contractor_id: 1,
         consumer_id: 1,
         labor: 500,

@@ -4,10 +4,10 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'rest_api',
-      user: 'postgres',
+      user: 'joshua',
       password: 'example',
       host: '127.0.0.1',
-      port: 5555
+      port: 5432
     },
     migrations: {
       directory: __dirname + '/db/migrations'
@@ -20,10 +20,10 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'rest_api_test',
-      user: 'postgres',
+      user: 'joshua',
       password: 'example',
       host: '127.0.0.1',
-      port: 5555
+      port: 5432
     },
     migrations:{
       directory: __dirname + '/db/migrations'

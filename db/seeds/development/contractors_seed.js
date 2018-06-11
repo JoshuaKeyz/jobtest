@@ -5,7 +5,6 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('contractors').insert({
-        id: 1,
         first_name: "John",
         last_name: "Doew",
         email: "josh.doew@example.com",

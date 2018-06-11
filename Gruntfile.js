@@ -2,18 +2,17 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         exec: {
-            build_application_container: {
-                command: function(){
-                    let command = `
-                    docker build -t keysoutsourcedocker/application_container:latest .
-                    &&
-                    docker stack deploy -c docker-compose.yml restAPI
-                    `   
-                    return `echo ${command}`
-                }
+            migrate_dev: {
+                command: "knex migrate:latest --env development"
             },
-            deploy_to_stack:{
-                cmd: function(){return 'echo "How are you?"'}
+            migrate_test: {
+                command: "knex migrate:latest --env test"
+            },
+            seed_dev: {
+                command: "knex seed:run --env development"
+            },
+            seed_test:{
+                command: "knex seed:run --env test"
             }
         },
         mochaTest:{
@@ -29,15 +28,8 @@ module.exports = function(grunt){
     });
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-mocha-test')
-<<<<<<< HEAD
-    grunt.loadNpmTasks('grunt-git');
+
 
     grunt.registerTask("test", ["mochaTest"])
-    grunt.registerTask("deploy", ['exec'])
-    grunt.registerTask("update_git", ['gitadd', 'gitcommit', 'gitpush'])
-=======
-
-    grunt.registerTask("test", ["mochaTest"])
-    grunt.registerTask("deploy", ['exec'])
->>>>>>> 379d539df1145ee84505554f0a14b576a70b0b58
+    grunt.registerTask("setup", ['exec'])
 };
