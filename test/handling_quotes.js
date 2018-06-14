@@ -1,14 +1,14 @@
 process.env.NODE_ENV = "test";
 
 var chai = require("chai");
-var should = chai.should();
+//var should = chai.should();
 var chaiHttp = require("chai-http");
 var server = require("../app");
 var knex = require("../db/knex");
 
 chai.use(chaiHttp);
 
-describe("Sending Quotes", ()=>{
+describe("Handling of quotes by the consumer", ()=>{
 	beforeEach((done)=>{
 		knex.migrate.rollback()
 			.then(function(){
@@ -28,22 +28,16 @@ describe("Sending Quotes", ()=>{
 				done();
 			});
 	});
-	it("Should send quotes to a registered consumer from a contractor", (done)=>{
+	it("Users should be able to reject quotes", (done)=>{
 		chai.request(server)
-			.post("/contractors/quotes")
+			.put("/consumers/quotes")
 			.send({
-				contractor_id: 1,
-				consumer_id: 1,
-				labor: 900,
-				expenses: 400,
-				sales_task: 150,
-				miscellaneous: 120,
-				total: 1100,
-				status: "pending",
+				quote_id: 1,
+				action: "reject"
 			})
 			.end((err, res)=>{
 				res.body.should.have.property("status");
-				res.body.status.should.equal("success");
+				res.body.status.should.equal("successful");
 				done();
 			});
 	});
